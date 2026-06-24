@@ -52,7 +52,7 @@ export default function Hero() {
           className="mb-6 sm:mb-8 inline-flex max-w-full items-center gap-2 rounded-full border border-cyan/20 bg-cyan/5 px-3 py-1.5 text-[11px] font-medium tracking-wide text-cyan sm:px-4 sm:text-xs"
         >
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan animate-pulse" />
-          <span className="text-balance">Taking your business from 0 to 1, online</span>
+          <span className="text-balance">Taking your business from 0 to 1, Online</span>
         </motion.div>
 
         <h1 className="text-balance text-[1.75rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl sm:leading-[1.1] md:text-6xl lg:text-7xl">
