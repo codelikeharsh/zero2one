@@ -12,12 +12,12 @@ export default function Pricing() {
     () => [
       {
         step: '01',
-        title: `${demoPrice} Demo`,
+        title: 'Demo',
         price: demoPrice,
         description:
           'A live demo website built for your business. See it, test it, love it — before any big commitment.',
         features: [
-          'Custom demo tailored to your business',
+          'Custom demo website tailored to your business',
           'Real design & real code',
           'Feedback & revision round',
           'Credited toward final project if you proceed',
