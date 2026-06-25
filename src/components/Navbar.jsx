@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 const navLinks = [
   { label: 'How It Works', href: '#how-it-works' },
@@ -12,6 +13,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const { demoPrice } = useGeoPricing()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -78,7 +80,7 @@ export default function Navbar() {
             }}
             className="hidden rounded-full bg-cyan px-5 py-2 text-sm font-medium text-navy transition-all hover:bg-cyan/90 hover:shadow-lg hover:shadow-cyan/25 lg:inline-block"
           >
-            Get ₹500 Demo
+            Get {demoPrice} Demo
           </a>
 
           <button
@@ -125,7 +127,7 @@ export default function Navbar() {
                   }}
                   className="block rounded-full bg-cyan px-4 py-3 text-center text-sm font-medium text-navy"
                 >
-                  Get ₹500 Demo
+                  Get {demoPrice} Demo
                 </a>
               </li>
             </ul>

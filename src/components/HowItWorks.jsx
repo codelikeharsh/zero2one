@@ -1,40 +1,47 @@
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquare, Code2, Eye, Rocket } from 'lucide-react'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
 import { fadeUp, staggerContainer } from '../utils/animations'
-
-const steps = [
-  {
-    icon: MessageSquare,
-    number: '01',
-    title: 'Tell us about your business',
-    description:
-      'Share your vision, brand, and what you need. A quick conversation is all it takes to get started.',
-  },
-  {
-    icon: Code2,
-    number: '02',
-    title: 'We build your ₹500 demo',
-    description:
-      'Our team crafts a live demo website tailored to your business — real design, real code, not a mockup.',
-  },
-  {
-    icon: Eye,
-    number: '03',
-    title: 'Review & refine',
-    description:
-      'See your demo, share feedback, and request changes. No commitment until you love what you see.',
-  },
-  {
-    icon: Rocket,
-    number: '04',
-    title: 'Full custom website',
-    description:
-      'Love the demo? We build your complete, customized website with every detail perfected.',
-  },
-]
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 export default function HowItWorks() {
+  const { demoPrice } = useGeoPricing()
+
+  const steps = useMemo(
+    () => [
+      {
+        icon: MessageSquare,
+        number: '01',
+        title: 'Tell us about your business',
+        description:
+          'Share your vision, brand, and what you need. A quick conversation is all it takes to get started.',
+      },
+      {
+        icon: Code2,
+        number: '02',
+        title: `We build your ${demoPrice} demo`,
+        description:
+          'Our team crafts a live demo website tailored to your business — real design, real code, not a mockup.',
+      },
+      {
+        icon: Eye,
+        number: '03',
+        title: 'Review & refine',
+        description:
+          'See your demo, share feedback, and request changes. No commitment until you love what you see.',
+      },
+      {
+        icon: Rocket,
+        number: '04',
+        title: 'Full custom website',
+        description:
+          'Love the demo? We build your complete, customized website with every detail perfected.',
+      },
+    ],
+    [demoPrice],
+  )
+
   return (
     <SectionWrapper id="how-it-works" className="bg-navy-light/50">
       <SectionHeader
@@ -93,7 +100,7 @@ export default function HowItWorks() {
         className="mt-12 sm:mt-16 rounded-2xl border border-cyan/10 bg-gradient-to-r from-cyan/5 to-teal/5 p-5 text-center sm:p-6 md:p-8"
       >
         <p className="text-balance text-sm text-gray-300 md:text-base">
-          <span className="font-semibold text-cyan">The ₹500 demo</span> is our promise —
+          <span className="font-semibold text-cyan">The {demoPrice} demo</span> is our promise —
           see your website before you commit to the full project. No templates, no
           surprises.
         </p>

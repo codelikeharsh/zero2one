@@ -1,52 +1,62 @@
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Check } from 'lucide-react'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
 import { fadeUp, staggerContainer } from '../utils/animations'
-
-const tiers = [
-  {
-    step: '01',
-    title: '₹500 Demo',
-    price: '₹500',
-    description: 'A live demo website built for your business. See it, test it, love it — before any big commitment.',
-    features: [
-      'Custom demo tailored to your business',
-      'Real design & real code',
-      'Feedback & revision round',
-      'Credited toward final project if you proceed',
-    ],
-    highlight: true,
-  },
-  {
-    step: '02',
-    title: 'Full Website',
-    price: 'Custom Quote',
-    description: 'Your complete, customized website built to your exact specifications after you approve the demo.',
-    features: [
-      'Fully custom design & development',
-      'Mobile-responsive & fast',
-      'SEO-friendly structure',
-      'Revision rounds as agreed per project',
-    ],
-    highlight: false,
-  },
-  {
-    step: '03',
-    title: 'Hosting & Maintenance',
-    price: 'Separate',
-    description: 'Optional ongoing services — domain, hosting, deployment, and maintenance billed separately.',
-    features: [
-      'Domain registration assistance',
-      'Hosting & deployment setup',
-      'Ongoing maintenance plans',
-      'Transparent separate pricing',
-    ],
-    highlight: false,
-    optional: true,
-  },
-]
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 export default function Pricing() {
+  const { demoPrice } = useGeoPricing()
+
+  const tiers = useMemo(
+    () => [
+      {
+        step: '01',
+        title: `${demoPrice} Demo`,
+        price: demoPrice,
+        description:
+          'A live demo website built for your business. See it, test it, love it — before any big commitment.',
+        features: [
+          'Custom demo tailored to your business',
+          'Real design & real code',
+          'Feedback & revision round',
+          'Credited toward final project if you proceed',
+        ],
+        highlight: true,
+      },
+      {
+        step: '02',
+        title: 'Full Website',
+        price: 'Custom Quote',
+        description:
+          'Your complete, customized website built to your exact specifications after you approve the demo.',
+        features: [
+          'Fully custom design & development',
+          'Mobile-responsive & fast',
+          'SEO-friendly structure',
+          'Revision rounds as agreed per project',
+        ],
+        highlight: false,
+      },
+      {
+        step: '03',
+        title: 'Hosting & Maintenance',
+        price: 'Separate',
+        description:
+          'Optional ongoing services — domain, hosting, deployment, and maintenance billed separately.',
+        features: [
+          'Domain registration assistance',
+          'Hosting & deployment setup',
+          'Ongoing maintenance plans',
+          'Transparent separate pricing',
+        ],
+        highlight: false,
+        optional: true,
+      },
+    ],
+    [demoPrice],
+  )
+
   const scrollToContact = () => {
     document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -68,7 +78,7 @@ export default function Pricing() {
       >
         {tiers.map((tier, i) => (
           <motion.div
-            key={tier.title}
+            key={tier.step}
             custom={i}
             variants={fadeUp}
             className={`relative rounded-2xl border p-6 sm:p-8 transition-all duration-500 ${
@@ -125,13 +135,15 @@ export default function Pricing() {
         className="mt-10 sm:mt-12 flex flex-col items-center justify-center gap-2 px-2 text-center text-sm text-gray-500"
       >
         <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-mono text-[10px] sm:gap-3 sm:text-xs">
-          <span className="text-cyan">₹500 Demo</span>
+          <span className="text-cyan">{demoPrice} Demo</span>
           <ArrowRight size={12} className="shrink-0" />
           <span className="text-gray-400">Full Website</span>
           <ArrowRight size={12} className="shrink-0" />
           <span className="text-gray-400">Hosting (Optional)</span>
         </div>
-        <p className="text-balance text-xs sm:text-sm">Demo fee is credited toward your final project cost when you proceed.</p>
+        <p className="text-balance text-xs sm:text-sm">
+          Demo fee is credited toward your final project cost when you proceed.
+        </p>
       </motion.div>
     </SectionWrapper>
   )

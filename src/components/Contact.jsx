@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Send, CheckCircle2 } from 'lucide-react'
 import InstagramIcon from './InstagramIcon'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 const websiteTypes = [
   'Business Website',
@@ -16,6 +17,7 @@ const websiteTypes = [
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqgqneb'
 
 export default function Contact() {
+  const { demoPrice } = useGeoPricing()
   const [form, setForm] = useState({
     name: '',
     business: '',
@@ -85,7 +87,7 @@ export default function Contact() {
       <SectionHeader
         label="Contact"
         title="Let's build your first website"
-        subtitle="Tell us about your business and we'll get started on your ₹500 demo."
+        subtitle={`Tell us about your business and we'll get started on your ${demoPrice} demo.`}
       />
 
       <div className="grid gap-8 sm:gap-12 lg:grid-cols-5">
@@ -131,7 +133,7 @@ export default function Contact() {
 
             <p className="text-sm text-gray-500">
               We typically respond within 24 hours. Ready to see your business online?
-              The ₹500 demo is the easiest way to start.
+              The {demoPrice} demo is the easiest way to start.
             </p>
           </div>
         </motion.div>
@@ -163,7 +165,7 @@ export default function Contact() {
                   <h3 className="mt-6 text-2xl font-semibold text-white">Message sent!</h3>
                   <p className="mt-2 max-w-sm text-gray-400">
                     Thanks for reaching out. We'll get back to you within 24 hours to
-                    discuss your ₹500 demo.
+                    discuss your {demoPrice} demo.
                   </p>
                   <button
                     type="button"

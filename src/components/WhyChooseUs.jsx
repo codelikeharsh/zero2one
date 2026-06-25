@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { IndianRupee, Zap, Code2, Shield } from 'lucide-react'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
 import { fadeUp, staggerContainer } from '../utils/animations'
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 function AnimatedCounter({ value, suffix = '' }) {
   const ref = useRef(null)
@@ -35,41 +36,49 @@ function AnimatedCounter({ value, suffix = '' }) {
   )
 }
 
-const trustPoints = [
-  {
-    icon: IndianRupee,
-    title: 'Affordable First Step',
-    description: 'Start with a ₹500 demo — no large upfront investment required.',
-    stat: '500',
-    statLabel: 'demo price',
-    prefix: '₹',
-  },
-  {
-    icon: Zap,
-    title: 'Fast Turnaround',
-    description: 'Your demo website delivered quickly so you can see results fast.',
-    stat: '48',
-    statLabel: 'hour demo',
-    suffix: 'h',
-  },
-  {
-    icon: Code2,
-    title: 'Built by Developers',
-    description: 'Hand-coded, custom websites — never generic templates.',
-    stat: '100',
-    statLabel: 'custom code',
-    suffix: '%',
-  },
-  {
-    icon: Shield,
-    title: 'Transparent Pricing',
-    description: 'Clear costs, no hidden fees. You know exactly what you are paying for.',
-    stat: '0',
-    statLabel: 'hidden fees',
-  },
-]
-
 export default function WhyChooseUs() {
+  const { demoPrice, country } = useGeoPricing()
+
+  const trustPoints = useMemo(() => {
+    const isIndia = country === 'IN'
+    const demoAmount = isIndia ? 500 : 10
+    const demoPrefix = isIndia ? '₹' : '$'
+
+    return [
+      {
+        icon: IndianRupee,
+        title: 'Affordable First Step',
+        description: `Start with a ${demoPrice} demo — no large upfront investment required.`,
+        stat: String(demoAmount),
+        statLabel: 'demo price',
+        prefix: demoPrefix,
+      },
+      {
+        icon: Zap,
+        title: 'Fast Turnaround',
+        description: 'Your demo website delivered quickly so you can see results fast.',
+        stat: '48',
+        statLabel: 'hour demo',
+        suffix: 'h',
+      },
+      {
+        icon: Code2,
+        title: 'Built by Developers',
+        description: 'Hand-coded, custom websites — never generic templates.',
+        stat: '100',
+        statLabel: 'custom code',
+        suffix: '%',
+      },
+      {
+        icon: Shield,
+        title: 'Transparent Pricing',
+        description: 'Clear costs, no hidden fees. You know exactly what you are paying for.',
+        stat: '0',
+        statLabel: 'hidden fees',
+      },
+    ]
+  }, [country, demoPrice])
+
   return (
     <SectionWrapper id="why-us">
       <SectionHeader

@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 export default function About() {
+  const { demoPrice } = useGeoPricing()
+
   return (
     <SectionWrapper id="about" className="bg-navy-light/50">
       <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-20">
@@ -27,7 +30,7 @@ export default function About() {
             </p>
             <p>
               We built a different model. Instead of asking you to commit thousands
-              upfront, we start with a live demo for just ₹500. You see exactly
+              upfront, we start with a live demo for just {demoPrice}. You see exactly
               what your website could look like before making any big decision.
             </p>
             <p>

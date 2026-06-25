@@ -1,40 +1,8 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
-
-const terms = [
-  {
-    title: 'Design & Development Only',
-    content:
-      'zero2one labs provides website design and development services. We craft your site — from demo to final delivery — as a standalone service.',
-  },
-  {
-    title: 'Hosting & Domain Not Included',
-    content:
-      'Domain registration, hosting, deployment, and ongoing server maintenance are not included in our design/development fees. These are separately chargeable services that we can arrange for you at transparent rates.',
-  },
-  {
-    title: '₹500 Demo Fee Policy',
-    content:
-      'The ₹500 demo fee is non-refundable once work begins. However, if you proceed with the full website project, this amount will be adjusted and credited against your final project cost.',
-  },
-  {
-    title: 'Project Timeline & Revisions',
-    content:
-      'Delivery timelines and the number of revision rounds are communicated per project before work begins. We believe in setting clear expectations upfront — no surprises along the way.',
-  },
-  {
-    title: 'Content & Assets',
-    content:
-      'Clients are responsible for providing business content (text, images, logos) unless otherwise agreed. We can guide you on what\'s needed during the demo phase.',
-  },
-  {
-    title: 'Ownership & Handover',
-    content:
-      'Upon full payment for the completed project, you receive ownership of the delivered website files and design. Hosting arrangements remain separate if opted.',
-  },
-]
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
@@ -71,7 +39,43 @@ function AccordionItem({ item, isOpen, onToggle }) {
 }
 
 export default function Terms() {
+  const { demoPrice } = useGeoPricing()
   const [openIndex, setOpenIndex] = useState(0)
+
+  const terms = useMemo(
+    () => [
+      {
+        title: 'Design & Development Only',
+        content:
+          'zero2one labs provides website design and development services. We craft your site — from demo to final delivery — as a standalone service.',
+      },
+      {
+        title: 'Hosting & Domain Not Included',
+        content:
+          'Domain registration, hosting, deployment, and ongoing server maintenance are not included in our design/development fees. These are separately chargeable services that we can arrange for you at transparent rates.',
+      },
+      {
+        title: `${demoPrice} Demo Fee Policy`,
+        content: `The ${demoPrice} demo fee is non-refundable once work begins. However, if you proceed with the full website project, this amount will be adjusted and credited against your final project cost.`,
+      },
+      {
+        title: 'Project Timeline & Revisions',
+        content:
+          'Delivery timelines and the number of revision rounds are communicated per project before work begins. We believe in setting clear expectations upfront — no surprises along the way.',
+      },
+      {
+        title: 'Content & Assets',
+        content:
+          "Clients are responsible for providing business content (text, images, logos) unless otherwise agreed. We can guide you on what's needed during the demo phase.",
+      },
+      {
+        title: 'Ownership & Handover',
+        content:
+          'Upon full payment for the completed project, you receive ownership of the delivered website files and design. Hosting arrangements remain separate if opted.',
+      },
+    ],
+    [demoPrice],
+  )
 
   return (
     <SectionWrapper id="terms" className="bg-navy-light/50">

@@ -1,4 +1,5 @@
 import { useLenis } from './hooks/useLenis'
+import { GeoPricingProvider } from './context/GeoPricingContext.jsx'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import HowItWorks from './components/HowItWorks'
@@ -15,21 +16,23 @@ function App() {
   useLenis()
 
   return (
-    <div className="relative min-h-screen bg-navy text-gray-200 overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <HowItWorks />
-        <Services />
-        <Portfolio />
-        <WhyChooseUs />
-        <About />
-        <Pricing />
-        <Terms />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <GeoPricingProvider>
+      <div className="relative min-h-screen bg-navy text-gray-200 overflow-x-hidden">
+        <Navbar />
+        <main>
+          <Hero />
+          <HowItWorks />
+          <Services />
+          <Portfolio />
+          <WhyChooseUs />
+          <About />
+          <Pricing />
+          <Terms />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </GeoPricingProvider>
   )
 }
 

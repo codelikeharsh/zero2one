@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import AnimatedBackground, { TypingHeadline } from './AnimatedBackground'
 import { useMagnetic } from '../hooks/useMagnetic'
+import { useGeoPricing } from '../hooks/useGeoPricing'
 
 function MagneticButton({ children, variant = 'primary', onClick, className = '' }) {
   const { ref, handleMouseMove, handleMouseLeave } = useMagnetic(0.25)
@@ -33,6 +34,8 @@ function MagneticButton({ children, variant = 'primary', onClick, className = ''
 }
 
 export default function Hero() {
+  const { demoPrice } = useGeoPricing()
+
   const scrollTo = (id) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -67,7 +70,7 @@ export default function Hero() {
         >
           We help small businesses and independent professionals take their first
           step into the digital world — starting with a live demo website for
-          just ₹500.
+          just {demoPrice}.
         </motion.p>
 
         <motion.div
@@ -77,7 +80,7 @@ export default function Hero() {
           className="mt-8 sm:mt-10 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
         >
           <MagneticButton variant="primary" onClick={() => scrollTo('#contact')}>
-            Get Your ₹500 Demo
+            Get Your {demoPrice} Demo
             <ArrowRight size={16} />
           </MagneticButton>
           <MagneticButton variant="secondary" onClick={() => scrollTo('#portfolio')}>
@@ -92,7 +95,7 @@ export default function Hero() {
           className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-2 text-[11px] text-gray-500 sm:gap-8 sm:text-xs"
         >
           <div className="flex items-center gap-2">
-            <span className="font-mono text-cyan">₹500</span>
+            <span className="font-mono text-cyan">{demoPrice}</span>
             <span>demo first</span>
           </div>
           <div className="h-4 w-px bg-white/10" />
