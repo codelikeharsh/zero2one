@@ -11,6 +11,7 @@ const websiteTypes = [
   'Landing Page',
   'Restaurant / Café',
   'E-commerce',
+  'Invitation Webpage',
   'Other',
 ]
 
