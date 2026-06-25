@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { IndianRupee, Zap, Code2, Shield } from 'lucide-react'
+import { IndianRupee, Zap, Code2, Shield, DollarSign } from 'lucide-react'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
 import { fadeUp, staggerContainer } from '../utils/animations'
 import { useGeoPricing } from '../hooks/useGeoPricing'
@@ -43,10 +43,10 @@ export default function WhyChooseUs() {
     const isIndia = country === 'IN'
     const demoAmount = isIndia ? 500 : 10
     const demoPrefix = isIndia ? '₹' : '$'
-
+    const demoIcon = isIndia ? IndianRupee : DollarSign
     return [
       {
-        icon: IndianRupee,
+        icon: demoIcon,
         title: 'Affordable First Step',
         description: `Start with a ${demoPrice} demo — no large upfront investment required.`,
         stat: String(demoAmount),
