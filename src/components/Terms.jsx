@@ -10,7 +10,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full min-w-0 items-center justify-between gap-3 py-4 text-left transition-colors hover:text-cyan sm:py-5"
+        className="flex w-full min-w-0 items-center justify-between gap-3 py-4 text-left transition-colors hover:text-white sm:py-5"
       >
         <span className="min-w-0 break-words font-medium text-white">{item.title}</span>
         <motion.span

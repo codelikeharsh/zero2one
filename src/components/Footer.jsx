@@ -43,7 +43,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     onClick={handleClick(link.href)}
-                    className="text-sm text-gray-400 transition-colors hover:text-cyan"
+                    className="text-sm text-gray-400 transition-colors hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -59,7 +59,7 @@ export default function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:contact@zero2one.live"
-                className="block break-all text-sm text-gray-400 transition-colors hover:text-cyan sm:break-normal"
+                className="block break-all text-sm text-gray-400 transition-colors hover:text-white sm:break-normal"
               >
                 contact@zero2one.live
               </a>
@@ -67,7 +67,7 @@ export default function Footer() {
                 href="https://instagram.com/zero2one.labs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-cyan"
+                className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
               >
                 <InstagramIcon size={16} />
                 zero2one.labs

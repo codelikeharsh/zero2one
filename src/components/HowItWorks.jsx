@@ -58,7 +58,7 @@ export default function HowItWorks() {
         className="relative"
       >
         {/* Desktop timeline line */}
-        <div className="absolute top-12 left-0 right-0 hidden h-px bg-gradient-to-r from-transparent via-cyan/30 to-transparent lg:block" />
+        <div className="absolute top-12 left-0 right-0 hidden h-px bg-gradient-to-r from-transparent via-white/15 to-transparent lg:block" />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
@@ -66,11 +66,11 @@ export default function HowItWorks() {
               key={step.number}
               custom={i}
               variants={fadeUp}
-              className="group relative"
+              className="group relative h-full"
             >
-              <div className="relative rounded-2xl border border-white/5 bg-navy-card/80 p-5 transition-all duration-500 sm:p-6 md:hover:border-cyan/20 md:hover:bg-navy-card md:hover:shadow-lg md:hover:shadow-cyan/5 lg:p-8">
+              <div className="relative flex h-full min-h-[270px] flex-col rounded-2xl border border-white/5 bg-navy-card/80 p-5 transition-all duration-500 sm:p-6 md:hover:border-white/15 md:hover:bg-navy-card md:hover:shadow-lg md:hover:shadow-black/20 lg:p-8">
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan/10 text-cyan ring-1 ring-cyan/20 transition-all group-hover:bg-cyan/15 group-hover:ring-cyan/30">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.045] text-cyan ring-1 ring-white/10 transition-all group-hover:bg-white/[0.075] group-hover:ring-white/15">
                     <step.icon size={22} strokeWidth={1.5} />
                   </div>
                   <span className="font-mono text-xs text-gray-600">{step.number}</span>
@@ -78,14 +78,11 @@ export default function HowItWorks() {
 
                 <h3 className="mb-3 text-lg font-semibold text-white">{step.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-400">{step.description}</p>
-
-                {/* Connector dot for desktop */}
-                <div className="absolute -top-3 left-1/2 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-cyan shadow-lg shadow-cyan/50 lg:block" />
               </div>
 
               {/* Mobile vertical connector */}
               {i < steps.length - 1 && (
-                <div className="mx-auto my-4 h-8 w-px bg-gradient-to-b from-cyan/30 to-transparent lg:hidden" />
+                <div className="mx-auto my-4 h-8 w-px bg-gradient-to-b from-white/15 to-transparent lg:hidden" />
               )}
             </motion.div>
           ))}
@@ -97,7 +94,7 @@ export default function HowItWorks() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-12 sm:mt-16 rounded-2xl border border-cyan/10 bg-gradient-to-r from-cyan/5 to-teal/5 p-5 text-center sm:p-6 md:p-8"
+        className="mt-12 rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.045] to-cyan/[0.055] p-5 text-center sm:mt-16 sm:p-6 md:p-8"
       >
         <p className="text-balance text-sm text-gray-300 md:text-base">
           <span className="font-semibold text-cyan">The {demoPrice} demo</span> is our promise —

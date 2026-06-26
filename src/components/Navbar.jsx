@@ -64,7 +64,7 @@ export default function Navbar() {
                     e.preventDefault()
                     handleNavClick(link.href)
                   }}
-                  className="text-sm text-gray-400 transition-colors hover:text-cyan"
+                  className="text-sm text-gray-400 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>
@@ -78,7 +78,7 @@ export default function Navbar() {
               e.preventDefault()
               handleNavClick('#contact')
             }}
-            className="hidden rounded-full bg-cyan px-5 py-2 text-sm font-medium text-navy transition-all hover:bg-cyan/90 hover:shadow-lg hover:shadow-cyan/25 lg:inline-block"
+            className="premium-button hidden rounded-full px-5 py-2 text-sm font-medium transition-all lg:inline-block"
           >
             Get {demoPrice} Demo
           </a>
@@ -112,7 +112,7 @@ export default function Navbar() {
                       e.preventDefault()
                       handleNavClick(link.href)
                     }}
-                    className="block rounded-lg px-4 py-3 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-cyan"
+                    className="block rounded-lg px-4 py-3 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -125,7 +125,7 @@ export default function Navbar() {
                     e.preventDefault()
                     handleNavClick('#contact')
                   }}
-                  className="block rounded-full bg-cyan px-4 py-3 text-center text-sm font-medium text-navy"
+                  className="premium-button block rounded-full px-4 py-3 text-center text-sm font-medium"
                 >
                   Get {demoPrice} Demo
                 </a>

@@ -99,9 +99,9 @@ export default function WhyChooseUs() {
             key={point.title}
             custom={i}
             variants={fadeUp}
-            className="group rounded-2xl border border-white/5 bg-navy-card p-5 sm:p-6 transition-all duration-500 md:hover:border-cyan/15 md:hover:shadow-lg md:hover:shadow-cyan/5"
+            className="group rounded-2xl border border-white/5 bg-navy-card p-5 transition-all duration-500 sm:p-6 md:hover:border-white/15 md:hover:shadow-lg md:hover:shadow-black/20"
           >
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan/10 text-cyan">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.045] text-cyan ring-1 ring-white/10">
               <point.icon size={20} strokeWidth={1.5} />
             </div>
 

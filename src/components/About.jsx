@@ -57,7 +57,7 @@ export default function About() {
           <div className="relative rounded-2xl border border-white/5 bg-navy-card p-6 sm:p-8 md:p-10">
             <div
               className="absolute -top-4 -right-4 h-24 w-24 rounded-full opacity-30 blur-2xl"
-              style={{ background: 'radial-gradient(circle, #00d4ff, transparent)' }}
+              style={{ background: 'radial-gradient(circle, rgba(143,234,255,0.34), transparent)' }}
             />
 
             <div className="mb-8 font-mono text-sm text-gray-500">

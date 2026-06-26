@@ -9,21 +9,21 @@ const services = [
     title: 'Custom Website Design',
     description:
       'Bespoke designs crafted for your brand — clean, modern, and built to convert visitors into customers.',
-    gradient: 'from-cyan/20 to-blue-500/10',
+    gradient: 'from-white/[0.08] to-cyan/10',
   },
   {
     icon: Briefcase,
     title: 'Business & Portfolio Sites',
     description:
       'Professional websites for local businesses, freelancers, and creatives who need to stand out online.',
-    gradient: 'from-teal/20 to-emerald-500/10',
+    gradient: 'from-white/[0.08] to-teal/10',
   },
   {
     icon: Layout,
     title: 'Landing Pages',
     description:
       'High-impact single-page sites designed to capture leads, showcase products, or launch campaigns.',
-    gradient: 'from-cyan/15 to-purple-500/10',
+    gradient: 'from-white/[0.08] to-cyan/10',
   },
   {
     icon: Server,
@@ -56,13 +56,13 @@ export default function Services() {
             key={service.title}
             custom={i}
             variants={scaleIn}
-            className="group relative overflow-hidden rounded-2xl border border-white/5 bg-navy-card transition-all duration-500 md:hover:border-cyan/20 md:hover:scale-[1.02] md:hover:shadow-xl md:hover:shadow-cyan/5"
+            className="group relative overflow-hidden rounded-2xl border border-white/5 bg-navy-card transition-all duration-500 md:hover:border-white/15 md:hover:scale-[1.015] md:hover:shadow-xl md:hover:shadow-black/20"
           >
             <div
               className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 transition-opacity duration-500 md:group-hover:opacity-100`}
             />
             <div className="relative p-6 md:p-8">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 text-cyan ring-1 ring-white/10 transition-all group-hover:bg-cyan/10 group-hover:ring-cyan/20">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.045] text-cyan ring-1 ring-white/10 transition-all group-hover:bg-white/[0.075] group-hover:ring-white/15">
                 <service.icon size={22} strokeWidth={1.5} />
               </div>
               <h3 className="mb-3 text-xl font-semibold text-white">{service.title}</h3>

@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import { cn } from '../utils/cn'
 
 function getParticleCount() {
   if (typeof window === 'undefined') return 50
@@ -126,6 +127,105 @@ export default function AnimatedBackground() {
           background: 'linear-gradient(to bottom, transparent 60%, #0a0a0f 100%)',
         }}
       />
+    </div>
+  )
+}
+
+export function ElegantShape({
+  className,
+  delay = 0,
+  width = 400,
+  height = 100,
+  rotate = 0,
+  gradient = 'from-cyan/[0.12]',
+}) {
+  const shouldReduceMotion = useReducedMotion()
+
+  return (
+    <motion.div
+      initial={
+        shouldReduceMotion
+          ? { opacity: 0 }
+          : { opacity: 0, y: -120, rotate: rotate - 15 }
+      }
+      animate={
+        shouldReduceMotion
+          ? { opacity: 1 }
+          : { opacity: 1, y: 0, rotate }
+      }
+      transition={{
+        duration: shouldReduceMotion ? 0.3 : 2.2,
+        delay: shouldReduceMotion ? 0 : delay,
+        ease: [0.23, 0.86, 0.39, 0.96],
+        opacity: { duration: 1 },
+      }}
+      className={cn('absolute', className)}
+      aria-hidden="true"
+    >
+      <motion.div
+        animate={shouldReduceMotion ? undefined : { y: [0, 15, 0] }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        style={{ width, height }}
+        className="relative"
+      >
+        <div
+          className={cn(
+            'absolute inset-0 rounded-full bg-gradient-to-r to-transparent',
+            'border-2 border-white/[0.1] shadow-[0_8px_32px_0_rgba(143,234,255,0.08)] backdrop-blur-[2px]',
+            'after:absolute after:inset-0 after:rounded-full',
+            'after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.18),transparent_70%)]',
+            gradient,
+          )}
+        />
+      </motion.div>
+    </motion.div>
+  )
+}
+
+export function ShapeHeroBackground() {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(143,234,255,0.055),transparent_55%)]" />
+      <div className="absolute inset-0 grid-bg opacity-45" />
+
+      <ElegantShape
+        delay={0.25}
+        width={520}
+        height={122}
+        rotate={8}
+        gradient="from-cyan/[0.1]"
+        className="left-[-22%] top-[16%] sm:left-[-10%] lg:left-[-4%] lg:top-[20%]"
+      />
+      <ElegantShape
+        delay={0.45}
+        width={460}
+        height={110}
+        rotate={-10}
+        gradient="from-white/[0.08]"
+        className="right-[-24%] bottom-[24%] sm:right-[-12%] lg:right-[-3%]"
+      />
+      <ElegantShape
+        delay={0.6}
+        width={320}
+        height={82}
+        rotate={-8}
+        gradient="from-teal/[0.08]"
+        className="left-[7%] bottom-[9%] hidden sm:block"
+      />
+      <ElegantShape
+        delay={0.75}
+        width={220}
+        height={58}
+        rotate={22}
+        gradient="from-white/[0.1]"
+        className="right-[12%] top-[13%] hidden md:block"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-navy/70 pointer-events-none" />
     </div>
   )
 }

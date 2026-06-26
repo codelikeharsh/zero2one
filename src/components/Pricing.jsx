@@ -83,12 +83,12 @@ export default function Pricing() {
             variants={fadeUp}
             className={`relative rounded-2xl border p-6 sm:p-8 transition-all duration-500 ${
               tier.highlight
-                ? 'border-cyan/30 bg-gradient-to-b from-cyan/10 to-navy-card shadow-xl shadow-cyan/10 lg:scale-105'
+                ? 'border-ember/25 bg-gradient-to-b from-ember/[0.08] to-navy-card shadow-xl shadow-black/20 lg:scale-105'
                 : 'border-white/5 bg-navy-card md:hover:border-white/10'
             } ${tier.optional ? 'opacity-90' : ''}`}
           >
             {tier.highlight && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cyan px-4 py-1 text-xs font-semibold text-navy">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-ember/50 bg-ember px-4 py-1 text-xs font-semibold text-black">
                 Start Here
               </div>
             )}
@@ -117,7 +117,7 @@ export default function Pricing() {
               <button
                 type="button"
                 onClick={scrollToContact}
-                className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-cyan py-3 text-sm font-semibold text-navy transition-all hover:bg-cyan/90 hover:shadow-lg hover:shadow-cyan/25"
+                className="premium-button mt-8 flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-all"
               >
                 Get Your Demo
                 <ArrowRight size={16} />

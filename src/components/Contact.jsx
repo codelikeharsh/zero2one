@@ -102,14 +102,14 @@ export default function Contact() {
           <div className="space-y-6">
             <a
               href="mailto:contact@zero2one.live"
-              className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-navy-card p-4 sm:p-5 transition-all hover:border-cyan/20 hover:shadow-lg hover:shadow-cyan/5"
+              className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-navy-card p-4 transition-all hover:border-white/15 hover:shadow-lg hover:shadow-black/20 sm:p-5"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cyan/10 text-cyan">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.045] text-cyan ring-1 ring-white/10">
                 <Mail size={22} />
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-wider text-gray-500">Email us</p>
-                <p className="truncate font-medium text-white group-hover:text-cyan transition-colors sm:break-all sm:whitespace-normal">
+                <p className="truncate font-medium text-white transition-colors group-hover:text-white/85 sm:break-all sm:whitespace-normal">
                   contact@zero2one.live
                 </p>
               </div>
@@ -119,14 +119,14 @@ export default function Contact() {
               href="https://instagram.com/zero2one.labs"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-navy-card p-4 sm:p-5 transition-all hover:border-cyan/20 hover:shadow-lg hover:shadow-cyan/5"
+              className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-navy-card p-4 transition-all hover:border-white/15 hover:shadow-lg hover:shadow-black/20 sm:p-5"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cyan/10 text-cyan">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.045] text-cyan ring-1 ring-white/10">
                 <InstagramIcon size={22} />
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-wider text-gray-500">Instagram</p>
-                <p className="truncate font-medium text-white group-hover:text-cyan transition-colors">
+                <p className="truncate font-medium text-white transition-colors group-hover:text-white/85">
                   @zero2one.labs
                 </p>
               </div>
@@ -280,7 +280,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-cyan py-3.5 text-sm font-semibold text-navy transition-all hover:bg-cyan/90 hover:shadow-lg hover:shadow-cyan/25 disabled:opacity-60"
+                    className="premium-button flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-sm font-semibold transition-all disabled:opacity-60"
                   >
                     {submitting ? (
                       <motion.span
